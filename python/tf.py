@@ -95,13 +95,13 @@ if __name__ == '__main__':
 	# os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 	print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
 
-	'''
+
 	dataSet, label = compileData('trace2.txt')
 	pk_data = (dataSet, label)
 	f = open('data.pkl', 'wb')
 	pickle.dump(pk_data, f)
 	f.close()
-	'''
+
 
 	f = open('data.pkl', 'rb')
 	dataSet, label = pickle.load(f)
@@ -118,7 +118,7 @@ if __name__ == '__main__':
 	model.compile(optimizer=tf.keras.optimizers.SGD(learning_rate=1), loss='mse')
 	model.fit(train_dataset, epochs=30, batch_size=batch_size)
 
-	dataTest, labelTest = compileData('trace.txt')set
+	dataTest, labelTest = compileData('trace.txt')
 	dataTest = tf.convert_to_tensor(dataTest)
 	dataTest = tf.expand_dims(dataTest, 1)
 	labelTest = tf.convert_to_tensor(labelTest)
